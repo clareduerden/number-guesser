@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Skeleton CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+    integrity="sha256-2YQRJMXD7pIAPHiXr0s+vlRWA7GYJEK0ARns7k2sbHY=" crossorigin="anonymous" />
+  <title>Number Guesser Game</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <h1>Number Guesser Game</h1>
+      <div id="game">
+        <p>Instructions: This is easy! Please guess a whole number between <span class="min-num">1</span> and <span
+            class="max-num">10<span>!</p>
+
+        <label for="guess-input">Your Guess....</label>
+        <input type="number" placeholder="Guess a number..." id="guess-input">
+        <input id="guess-submit" class="button-primary" type="submit" value="Submit">
+        <p class="message"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS SCRIPTS -->
+  <script src="app.js"></script>
+</body>
+
+</html>
