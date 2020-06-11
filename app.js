@@ -7,9 +7,9 @@
 */
 
 // Create Gane Values
-let min = 1,
-  max = 10,
-  winningNum = 2,
+let min = 10,
+  max = 20,
+  winningNum = getRandomNum(min, max),
   guessesLeft = 3;
 
 // Get UI Elements
@@ -94,8 +94,20 @@ function clearMessage() {
   message.textContent = '';
 }
 
-// generateRandomNum(min, max);
-function generateRandomNum(min, max) {
-  // This will generate a ramdon number between the min and max
-  let lowest = min
+// Generate the winning number
+function getRandomNum(min, max) {
+  // gerenate a random decimal 
+  let x = Math.random();
+  console.log(x);
+  // find the amount of nummber options between min and max - need to add 1
+  let y = max - min + 1;
+  console.log(y);
+  // multiply and add the minimum
+  let z = x * y + min;
+  console.log(z);
+  // round down to a whole number
+  let a = Math.floor(z);
+  console.log(a)
+  // return the random number
+  return a;
 }
