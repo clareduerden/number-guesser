@@ -41,17 +41,35 @@ function checkGuess(e) {
     setMessage(`ERROR: Please enter a number between ${min} and ${max}`, "red");
   }
   else if (guess === winningNum) {
-    guessInput.disabled = true;
-    guessBtn.disabled = true;
-    guessInput.style.borderColor = "green";
-    setMessage(`You guessed ${guess} and this is right! The winning number is ${winningNum}`, "Green");
+    gameOver(true, `YOU WIN! You guessed ${guess}. The winning number is ${winningNum}!`);
   }
   else {
-    setMessage(`You guessed ${guess} and it is wrong! Please guess again. You have ${guessesLeft} guesses remaining!`, "Blue");
+    guessesLeft -= 1;
+    // game over - answer wrong and no guesses left
+    if (guessesLeft === 0) {
+      gameOver(false, `GAME OVER. You guessed ${guess} and have ${guessesLeft} guesses left. The winning number was ${winningNum}`);
+    }
+    // gane continues - answer wrong, guesses left
+    else {
+      setMessage(`You guessed ${guess} and it is wrong! Please guess again. You have ${guessesLeft} guesses remaining!`, "red");
+      guessInput.style.borderColor = "red";
+      // clear the input for next guess
+      guessInput.value = '';
+    }
   }
 }
 
-// Set the message
+// Gane over behaviour for win and lose
+function gameOver(won, msg) {
+  let color;
+  won === true ? color = "green" : color = "red";
+  guessInput.style.borderColor = color;
+  setMessage(msg, color);
+  guessInput.disabled = true;
+  guessBtn.disabled = true;
+}
+
+// Set the message text and color
 function setMessage(msg, color) {
   message.style.color = color;
   message.textContent = msg;
@@ -61,11 +79,9 @@ function setMessage(msg, color) {
 function clearMessage() {
   message.textContent = '';
 }
+
 // generateRandomNum(min, max);
 function generateRandomNum(min, max) {
   // This will generate a ramdon number between the min and max
-
   let lowest = min
-
-
 }
