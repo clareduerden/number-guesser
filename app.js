@@ -30,6 +30,9 @@ maxNum.textContent = max;
 // Listen for the guess
 guessBtn.addEventListener("click", checkGuess);
 
+// Listen for Play Again event
+game.addEventListener("mousedown", playAgain);
+
 // Check the 
 function checkGuess(e) {
   // the value is a string - must parse to an Int
@@ -66,13 +69,24 @@ function gameOver(won, msg) {
   guessInput.style.borderColor = color;
   setMessage(msg, color);
   guessInput.disabled = true;
-  guessBtn.disabled = true;
+  // Setup play again fucntionality
+  guessBtn.value = "Play Again";
+  guessBtn.className += " play-again";
 }
 
 // Set the message text and color
 function setMessage(msg, color) {
   message.style.color = color;
   message.textContent = msg;
+}
+
+// Play again
+function playAgain(e) {
+  console.log(e.target);
+  // check if the target has the class of play-again then reload the window
+  if (e.target.classList.contains("play-again")) {
+    window.location.reload();
+  }
 }
 
 // Clear the message
